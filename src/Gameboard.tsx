@@ -34,20 +34,23 @@ export const Gameboard: FC<GameboardProps> = ({ itemData }) => {
     setPrevCard({ title: "", id: null });
   };
 
-  const hoverEffect = {
-    transition: "transform 0.3s ease",
-    "&:hover": {
-      opacity: "50%",
-    },
+  const imageItemStyles = (id: number) => {
+    return {
+      transition: "transform 0.3s ease",
+      "&:hover": {
+        opacity: "50%",
+      },
+      cursor: "pointer",
+      opacity: id === prevCard.id ? "50%" : "100%",
+    };
   };
 
   return (
     <ImageList sx={{ width: 500, height: 500 }} cols={4} rowHeight={100}>
-      {itemData.map((item, idx) => (
-        <ImageListItem key={idx} sx={hoverEffect}>
+      {itemData.map((item) => (
+        <ImageListItem key={item.id} sx={() => imageItemStyles(item.id)}>
           <img
             onClick={() => handleClick(item.title, item.id)}
-            style={{ cursor: "pointer" }}
             srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
             alt={item.title}
