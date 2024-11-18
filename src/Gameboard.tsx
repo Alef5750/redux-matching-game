@@ -18,7 +18,7 @@ export const Gameboard: FC<GameboardProps> = ({ itemData }) => {
   const [prevCard, setPrevCard] = useState<ICardState>(initialCardState);
 
   const handleClick = (title: string, id: number) => {
-    if (!prevCard) {
+    if (!prevCard.id) {
       setPrevCard({ title, id });
     } else {
       compare(title, id);
