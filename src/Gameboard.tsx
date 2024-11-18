@@ -34,18 +34,17 @@ export const Gameboard: FC<GameboardProps> = ({ itemData }) => {
     setPrevCard({ title: "", id: null });
   };
 
+  const hoverEffect = {
+    transition: "transform 0.3s ease",
+    "&:hover": {
+      opacity: "50%",
+    },
+  };
+
   return (
     <ImageList sx={{ width: 500, height: 500 }} cols={4} rowHeight={100}>
       {itemData.map((item, idx) => (
-        <ImageListItem
-          key={idx}
-          sx={{
-            transition: "transform 0.3s ease",
-            "&:hover": {
-              opacity: "50%",
-            },
-          }}
-        >
+        <ImageListItem key={idx} sx={hoverEffect}>
           <img
             onClick={() => handleClick(item.title, item.id)}
             style={{ cursor: "pointer" }}
