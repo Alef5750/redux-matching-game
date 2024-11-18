@@ -37,7 +37,15 @@ export const Gameboard: FC<GameboardProps> = ({ itemData }) => {
   return (
     <ImageList sx={{ width: 500, height: 500 }} cols={4} rowHeight={100}>
       {itemData.map((item, idx) => (
-        <ImageListItem key={idx}>
+        <ImageListItem
+          key={idx}
+          sx={{
+            transition: "transform 0.3s ease",
+            "&:hover": {
+              opacity: "50%",
+            },
+          }}
+        >
           <img
             onClick={() => handleClick(item.title, item.id)}
             style={{ cursor: "pointer" }}
